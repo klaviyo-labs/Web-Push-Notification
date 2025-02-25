@@ -102,7 +102,7 @@ _The function will return output like this:_
      - `"web-push"` _(For sending push notifications)_
      - `"klaviyo-api"` _(For saving new events)_
 
-4. _(optional)_ To enable **click tracking**, set **TRACK_CLICKS** to _true_, and **REDIRECTION_URL** to your Custom Klaviyo Hosted Page URL. This can be found by navigating to Settings > Other > Hosted pages (from your Klaviyo account). The Blog Post walks through how to set this up [here](https://medium.com/p/14a8361eb9f4).
+4. _(optional)_ To enable **click tracking**, set **TRACK_CLICKS** to _true_, and **REDIRECTION_URL** to your Custom Klaviyo Hosted Page URL. This can be found by navigating to Settings > Other > Hosted pages (from your Klaviyo account). The Blog Post walks through how to set this up [here](https://medium.com/klaviyo-developers/solution-recipe-25-how-to-trigger-web-push-notifications-through-klaviyo-14a8361eb9f4).
 
 ---
 
@@ -125,7 +125,7 @@ _The function will return output like this:_
      - `"web-push"` _(For sending push notifications)_
      - `"klaviyo-api"` _(For communicating with Klaviyo)_
 
-5. _(optional)_ To enable **click tracking**, set **TRACK_CLICKS** to _true_, and **REDIRECTION_URL** to your Custom Klaviyo Hosted Page URL. This can be found by navigating to Settings > Other > Hosted pages (from your Klaviyo account). The Blog Post walks through how to set this up [here](https://medium.com/p/14a8361eb9f4).
+5. _(optional)_ To enable **click tracking**, set **TRACK_CLICKS** to _true_, and **REDIRECTION_URL** to your Custom Klaviyo Hosted Page URL. This can be found by navigating to Settings > Other > Hosted pages (from your Klaviyo account). The Blog Post walks through how to set this up [here](https://medium.com/klaviyo-developers/solution-recipe-25-how-to-trigger-web-push-notifications-through-klaviyo-14a8361eb9f4).
 
 **Note:** Remember to **deploy** the Napkin function.
 
