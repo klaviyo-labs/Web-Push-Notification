@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Klaviyo Web Push Demo</title>
+    <link rel="stylesheet" href="styles.css" />
+
+    <script>
+      function checkKlaviyoLoaded() {
+        const subscribeBtn = document.getElementById("subscribeBtn");
+        const statusMessage = document.getElementById("statusMessage");
+
+        // Wait for Klaviyo to be fully loaded before running
+        const interval = setInterval(() => {
+          if (typeof klaviyo !== "undefined" && klaviyo.isIdentified) {
+            clearInterval(interval); // Stop checking once Klaviyo is available
+
+            klaviyo.isIdentified().then((isIdentified) => {
+              if (isIdentified) {
+                subscribeBtn.disabled = false;
+                statusMessage.innerText =
+                  "You're identified! You can now enable push notifications.";
+              } else {
+                statusMessage.innerText =
+                  "Please identify yourself first. Add ?utm_email=your.email@klaviyo-demo.com to the URL in your browser's address bar, press Enter, and then refresh the page.";
+                subscribeBtn.disabled = true;
+              }
+            });
+          }
+        }, 500); // Check every 500ms until Klaviyo is available
+      }
+    </script>
+
+    <script
+      async
+      type="text/javascript"
+      src="//static.klaviyo.com/onsite/js/klaviyo.js?company_id=[KLAVIYO_PUBLIC_KEY]"
+      onload="checkKlaviyoLoaded()"
+    ></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Klaviyo Web Push Notifications</h1>
+      <p>Stay updated with real-time notifications.</p>
+      <button id="subscribeBtn" disabled>Enable Push Notifications</button>
+      <p id="statusMessage">Checking identification status...</p>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>

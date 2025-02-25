@@ -1,0 +1,11 @@
+{
+  "flow": "Example send",
+  "title": "Hello World From Klaviyo",
+  "body": "Klaviyo body text",
+  "url": "https://developers.klaviyo.com/en",
+  "image": "https://images.app.goo.gl/knsbCPTrdz4dhkoH9",
+  "profile": "{{ person.KlaviyoID }}",
+  "endpoint": "{{ person.web_push__endpoint|default:'' }}",
+  "p256dh": "{{ person.web_push__p256dh|default:'' }}",
+  "auth": "{{ person.web_push__auth|default:'' }}"
+}

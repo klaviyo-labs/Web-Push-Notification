@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>kla Demo Restaurant Reservation</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <script>
+      function checkKlaviyoLoaded() {
+        const subscribeBtn = document.getElementById("subscribeBtn");
+        const statusMessage = document.getElementById("statusMessage");
+
+        // Wait for Klaviyo to be fully loaded before running
+        const interval = setInterval(() => {
+          if (typeof klaviyo !== "undefined" && klaviyo.isIdentified) {
+            clearInterval(interval); // Stop checking once Klaviyo is available
+
+            klaviyo.isIdentified().then((isIdentified) => {
+              if (isIdentified) {
+                subscribeBtn.classList.remove("disabled");
+              } else {
+                statusMessage.style.display = "block";
+                statusMessage.innerText =
+                  "Please identify yourself first. To do so, add '?utm_email=your.email@klaviyo-demo.com' to the URL in your browser's address bar, press Enter, and then refresh the page.";
+                subscribeBtn.classList.add("disabled");
+              }
+            });
+          }
+        }, 500); // Check every 500ms until Klaviyo is available
+      }
+
+      // Attach click listener to the subscribe button to show prompt if disabled
+      document.addEventListener("DOMContentLoaded", function () {
+        const subscribeBtn = document.getElementById("subscribeBtn");
+        subscribeBtn.addEventListener("click", function (e) {
+          if (this.classList.contains("disabled")) {
+            alert(
+              "Please identify yourself first. To do so, add '?utm_email=your.email@klaviyo-demo.com' to your browser's address bar, press Enter, and then refresh the page."
+            );
+            e.preventDefault();
+          }
+        });
+      });
+    </script>
+    <script
+      async
+      type="text/javascript"
+      src="//static.klaviyo.com/onsite/js/klaviyo.js?company_id=[KLAVIYO_PUBLIC_KEY]"
+      onload="checkKlaviyoLoaded()"
+    ></script>
+  </head>
+  <body>
+    <div class="pagination">
+      <p>Home > Restaurants > Book a Table</p>
+    </div>
+    <!-- Reservation section -->
+    <section class="product-container">
+      <!-- Left side: Images -->
+      <div class="img-card">
+        <img
+          src="img/image-1.jpg"
+          alt="Restaurant Interior"
+          id="featured-image"
+        />
+        <!-- Thumbnail images -->
+        <div class="small-Card">
+          <img src="img/image-1.jpg" alt="Dining Area" class="small-Img" />
+          <img
+            src="img/small-img-1.jpg"
+            alt="Outdoor Seating"
+            class="small-Img"
+          />
+          <img
+            src="img/small-img-2.jpg"
+            alt="Private Dining Room"
+            class="small-Img"
+          />
+          <img
+            src="img/small-img-3.jpg"
+            alt="Restaurant Ambience"
+            class="small-Img"
+          />
+        </div>
+      </div>
+      <!-- Right side: Reservation Details -->
+      <div class="product-info">
+        <h3>kla Demo Restaurant Reservation</h3>
+        <p>
+          Experience an unforgettable dining experience at Kla. Our restaurant
+          offers an exquisite selection of dishes, a warm ambience, and
+          exceptional service.
+        </p>
+        <p>
+          Book your table now to secure your place at one of the city's most
+          sought-after dining destinations—ideal for romantic dinners, family
+          gatherings, or special celebrations.
+        </p>
+
+        <!-- Booking Details: Party Size and Preferred Date -->
+        <div class="booking-details">
+          <div class="sizes">
+            <p>Party Size:</p>
+            <select name="size" id="size" class="size-option">
+              <option value="2">2 people</option>
+              <option value="4">4 people</option>
+              <option value="6">6 people</option>
+              <option value="8">8 people</option>
+            </select>
+          </div>
+          <div class="date-picker">
+            <p>Preferred Date & Time:</p>
+            <input
+              type="date"
+              id="preferredDate"
+              name="preferredDate"
+              class="date-input"
+            />
+            <select name="ampm" id="ampm" class="ampm-select">
+              <option value="am">AM</option>
+              <option value="pm">PM</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Reservation Alert / CTA Section -->
+        <div id="backinstock">
+          <div class="booking-alert">
+            <button class="reserve-btn" disabled>Reserve Now</button>
+            <h4 class="cta-text">
+              We are fully booked. Sign up now to get notified when your
+              requested day becomes available.
+            </h4>
+          </div>
+          <button id="subscribeBtn" class="get-alert-btn disabled">
+            Get Alerted
+          </button>
+          <h5 id="statusMessage" style="display: none"></h5>
+        </div>
+      </div>
+    </section>
+
+    <!-- script tags -->
+    <script src="js/cart.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>

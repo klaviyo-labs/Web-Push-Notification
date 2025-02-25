@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Redirecting</title>
+  </head>
+  <body>
+    Redirecting...
+    <script>
+      //configurable
+      const eventName = "Clicked Web Push Notification"; //event name saved in Klaviyo when a customer clicks on the notification's call to action
+      const getParams = new Array(
+        "utm_content",
+        "utm_medium",
+        "utm_source",
+        "utm_campaign",
+        "utm_content"
+      ); //parameters to automataically save in the event if they exist
+
+      const queryString = window.location.search;
+      const urlParams = new URLSearchParams(queryString);
+      const profile = urlParams.get("p");
+      const flow = urlParams.get("f");
+
+      var url = decodeUrl(
+        new URLSearchParams(window.location.search).get("redirect")
+      );
+      var properties = {};
+
+      properties["URL"] = url;
+      properties["flow"] = flow;
+
+      // Parse the URL to extract query parameters
+      var queryParams = {};
+      var urlComponents = new URL(url);
+      if (urlComponents.search) {
+        var searchParams = new URLSearchParams(urlComponents.search);
+        searchParams.forEach(function (value, key) {
+          queryParams[key] = value;
+        });
+      }
+
+      // Iterate over each parameter in getParams
+      getParams.forEach(function (param) {
+        if (queryParams[param] !== undefined) {
+          // Append each key-value pair to the properties object
+          properties[param] = queryParams[param];
+        }
+      });
+
+      function encryptUrl(url) {
+        // Encode the URL using base64 encoding
+        var encryptedUrl = btoa(url);
+        // Return the encrypted URL
+        return encryptedUrl;
+      }
+
+      function decodeUrl(base64Url) {
+        // Replace '-' with '+', and '_' with '/'
+        let base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
+
+        // Add padding if required
+        const padding =
+          base64.length % 4 === 0 ? "" : "===".slice(base64.length % 4);
+        base64 += padding;
+
+        return atob(base64);
+      }
+
+      function sendEvent(profile, eventName, properties) {
+        const options = {
+          method: "POST",
+          headers: {
+            revision: "2024-02-15",
+            "content-type": "application/json",
+          },
+          body: JSON.stringify({
+            data: {
+              type: "event",
+              attributes: {
+                properties,
+
+                metric: {
+                  data: {
+                    type: "metric",
+                    attributes: {
+                      name: eventName,
+                    },
+                  },
+                },
+                profile: {
+                  data: {
+                    type: "profile",
+                    attributes: {
+                      id: profile,
+                    },
+                  },
+                },
+              },
+            },
+          }),
+        };
+        fetch(
+          "https://a.klaviyo.com/client/events/?company_id={{organization.id}}",
+          options
+        )
+          .then((response) => response.json())
+          .then((response) => console.log(response))
+          .catch((err) => console.log(err));
+      }
+
+      if (profile != "" && profile != null) {
+        sendEvent(profile, eventName, properties);
+        console.log("true");
+      }
+
+      window.location.replace(properties["URL"]);
+    </script>
+  </body>
+</html>

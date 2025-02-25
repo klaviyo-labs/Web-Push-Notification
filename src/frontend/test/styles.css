@@ -1,0 +1,49 @@
+body {
+  font-family: "Arial", sans-serif;
+  background-color: #f5f6f7;
+  color: #333;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 100%;
+  max-width: 400px;
+  margin: 100px auto;
+  padding: 20px;
+  background: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+h1 {
+  font-size: 24px;
+  color: #152235; /* Klaviyo dark blue */
+}
+
+p {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+button {
+  background-color: #5865f2; /* Klaviyo brand color */
+  color: #fff;
+  font-size: 16px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background-color: #4054c2;
+}
+
+#statusMessage {
+  font-size: 14px;
+  color: #555;
+  margin-top: 10px;
+}
