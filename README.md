@@ -6,7 +6,7 @@
 
 This repository provides a complete solution for implementing **web push notifications** with Klaviyo, enabling businesses to engage users **in real time through their browsers**.
 
-This Repo has an accompanying [Blog Post](https://medium.com/p/14a8361eb9f4) which goes into greater detail regarding business use cases, techincal steps and common gotchas. It is advised that you also read the [Post](https://medium.com/p/14a8361eb9f4).
+This Repo has an accompanying [Blog Post]([https://medium.com/p/14a8361eb9f4](https://medium.com/klaviyo-developers/solution-recipe-25-how-to-trigger-web-push-notifications-through-klaviyo-14a8361eb9f4)) which goes into greater detail regarding business use cases, techincal steps and common gotchas.
 
 The implementation supports multiple approaches:  
 ✅ **Klaviyo Custom Actions/CDP** _(used to trigger web push directly from Klaviyo)_  
