@@ -285,7 +285,7 @@ This project was created by [Samson Odelowo](https://www.linkedin.com/in/samson-
 
 For more Klaviyo technical insights, visit:
 
-🔗 [How to trigger Web Push Notifications through Klaviyo](https://medium.com/klaviyo-developers)
+🔗 [How to trigger Web Push Notifications through Klaviyo](https://medium.com/klaviyo-developers/solution-recipe-25-how-to-trigger-web-push-notifications-through-klaviyo-14a8361eb9f4)
 
 🔗 [Klaviyo Developers Blog](https://medium.com/klaviyo-developers)
 
